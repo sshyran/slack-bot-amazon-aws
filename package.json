@@ -1,0 +1,22 @@
+{
+  "name": "sgbus-slack-bot",
+  "version": "1.0.0",
+  "description": "Singapore Bus Slack Bot",
+  "author": "Lester Chan <lesterchan@gmail.com> (https://lesterchan.net)",
+  "homepage": "https://lesterchan.net",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lesterchan/sgbus-slack-bot.git"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "config": {},
+  "dependencies": {
+    "moment": "*",
+    "request-promise": "*"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=1.4.0"
+  }
+}
