@@ -35,7 +35,7 @@ function processCommands(event, context) {
     }
 }
 /*
-var event = { 'text': 'ipinfo test', 'trigger_word': 'ipinfo'},
+var event = { 'text': 'socialstats https://lesterchan.net', 'trigger_word': 'socialcount'},
     context = {
         fail: function (error) {
             console.log(error);

@@ -2,6 +2,20 @@
  * Helper
  */
 module.exports = {
+    formatNumber: function(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    },
+    formatBytes: function(bytes,decimals) {
+        bytes = parseInt(bytes, 10);
+        if(bytes === 0) {
+            return '0 Byte';
+        }
+        var k = 1024,
+            dm = decimals + 1 || 3,
+            sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+            i = Math.floor(Math.log(bytes) / Math.log(k));
+        return (bytes / Math.pow(k, i)).toPrecision(dm) + ' ' + sizes[i];
+    },
     getMessage: function(message) {
         if(message) {
             message = message.toString().trim();
