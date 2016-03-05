@@ -2,12 +2,16 @@
  * Helper
  */
 module.exports = {
-    parseCommand: function(message) {
-        var tokens = message.split(' ');
-        if(!tokens[0].match(/^bus/)) {
-            return null;
+    getMessage: function(message) {
+        if(message) {
+            message = message.toString().trim();
+        } else {
+            message = '';
         }
-        var command = {}, cmd = tokens.shift(), m;
+        return (message.length > 0 ? message : 'N/A');
+    },
+    parseCommand: function(message) {
+        var tokens = message.split(' '), command = {}, cmd = tokens.shift(), m;
         if(m = cmd.match(/(\w*)/)) {
             command[m[1]] = tokens;
         }
