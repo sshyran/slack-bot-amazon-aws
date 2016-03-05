@@ -35,7 +35,7 @@ function processCommands(event, context) {
     }
 }
 /*
-var event = { 'text': 'socialstats https://lesterchan.net', 'trigger_word': 'socialcount'},
+var event = { 'text': 'socialstats <https://lesterchan.net/blog/2016/02/26/singtel-samsung-galaxy-s7-4g-and-galaxy-s7-edge-4g-price-plans/>', 'trigger_word': 'socialstats'},
     context = {
         fail: function (error) {
             console.log(error);
