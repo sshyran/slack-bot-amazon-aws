@@ -77,10 +77,60 @@ $ zip -r slack-bot.zip *.js node_modules/*
 
 ### Testing
 1. Do a CURL to see if your Lambda and API integration works.  
-```curl --data "text=haze&trigger_word=haze" <Invoke URL>```
+```
+$ curl --data "text=haze&trigger_word=haze" <Invoke URL>
+```
 
 2. You should see the response something like that:  
-```{"attachments":[{"pretext":":cloud: *Haze*","title":"PM2.5 Hourly Update","text":"Last updated at _14:00, 7th March 2016_","fallback":"Average: 11, Central: 10, North: 9, South: 16, East: 10, West: 9","mrkdwn_in":["pretext","text"],"color":"#479b02","fields":[{"title":"Average","value":"11","short":true},{"title":"Central","value":"10","short":true},{"title":"North","value":"9","short":true},{"title":"South","value":"16","short":true},{"title":"East","value":"10","short":true},{"title":"West","value":"9","short":true}]}]}```
+```
+{  
+    "attachments":[  
+        {  
+            "pretext":":cloud: *Haze*",
+            "title":"PM2.5 Hourly Update",
+            "text":"Last updated at _14:00, 7th March 2016_",
+            "fallback":"Average: 11, Central: 10, North: 9, South: 16, East: 10, West: 9",
+            "mrkdwn_in":[  
+                "pretext",
+                "text"
+            ],
+            "color":"#479b02",
+            "fields":[  
+                {  
+                    "title":"Average",
+                    "value":"11",
+                    "short":true
+                },
+                {  
+                    "title":"Central",
+                    "value":"10",
+                    "short":true
+                },
+                {  
+                    "title":"North",
+                    "value":"9",
+                    "short":true
+                },
+                {  
+                    "title":"South",
+                    "value":"16",
+                    "short":true
+                },
+                {  
+                    "title":"East",
+                    "value":"10",
+                    "short":true
+                },
+                {  
+                    "title":"West",
+                    "value":"9",
+                    "short":true
+                }
+            ]
+        }
+    ]
+}
+```
 
 3. Type in "haze" (without the quotes) in any Slack channels.
 4. You should get back a nicely formatting response.
