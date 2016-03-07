@@ -20,7 +20,7 @@ function processCommands(event, context) {
             context.fail({text: 'Error: Invalid Command'});
         }
 
-        var command = event.trigger_word,
+        var command = event.trigger_word.toLowerCase(),
             commandArguments = helper.parseCommand(event.text.trim());
 
         commands[command](commandArguments[command]).then(function(response) {
