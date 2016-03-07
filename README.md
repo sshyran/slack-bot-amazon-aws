@@ -59,12 +59,27 @@ $ zip -r slack-bot.zip *.js node_modules/*
 23. Click "Deploy".
 24. Note the "Invoke URL" at the top and your API is now live.
 
+### Slack
+1. Go to [Slack Apps](https://slack.com/apps).
+2. Search for "Outgoing WebHooks".
+3. Click "Install" besides the team you wanted.
+4. Click "Add Outgoing WebHook Integration".
+5. Scroll down to "Integration Settings" section.
+6. Under "Channel", choose "Any".
+7. Under "Trigger Word(s)", type in "bus,haze,ipinfo,socialstats" (without the quotes).
+8. Under "URL(s)", type in your "Invoke URL" as noted above.
+9. Customize "Descriptive Label", "Name" and "Icon" to your liking and click "Save Settings".
+10. You are all set.
+
 ### Testing
-1. Do a CURL to see if your Lambda and API integration works.
+1. Do a CURL to see if your Lambda and API integration works.  
 ```curl --data "text=haze&trigger_word=haze" <Invoke URL>```
 
-2. You should see the results:
+2. You should see the response something like that:  
 ```{"attachments":[{"pretext":":cloud: *Haze*","title":"PM2.5 Hourly Update","text":"Last updated at _14:00, 7th March 2016_","fallback":"Average: 11, Central: 10, North: 9, South: 16, East: 10, West: 9","mrkdwn_in":["pretext","text"],"color":"#479b02","fields":[{"title":"Average","value":"11","short":true},{"title":"Central","value":"10","short":true},{"title":"North","value":"9","short":true},{"title":"South","value":"16","short":true},{"title":"East","value":"10","short":true},{"title":"West","value":"9","short":true}]}]}```
+
+3. Type in "haze" (without the quotes) in any Slack channels.
+4. You should get back a nicely formatting response.
 
 ## Commands
 ### Singapore Bus Arrival Timings 
