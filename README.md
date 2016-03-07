@@ -75,13 +75,13 @@ $ zip -r slack-bot.zip *.js node_modules/*
 9. Customize "Descriptive Label", "Name" and "Icon" to your liking and click "Save Settings".
 10. You are all set.
 
-### Testing
-1. Do a CURL to see if your Lambda and API integration works.  
+### Testing via CLI
+Do a CURL to see if your Lambda and API integration works.  
 ```
 $ curl --data "text=haze&trigger_word=haze" <Invoke URL>
 ```
 
-2. You should see the response something like that:  
+You should see the response something like that:  
 ```
 {  
     "attachments":[  
@@ -132,8 +132,9 @@ $ curl --data "text=haze&trigger_word=haze" <Invoke URL>
 }
 ```
 
-3. Type in "haze" (without the quotes) in any Slack channels.
-4. You should get back a nicely formatting response.
+### Testing via Slack
+1. Type in "haze" (without the quotes) in any Slack channel.
+2. You should get back a nicely formatting response as shown in the first screenshot.
 
 ## Commands
 ### Singapore Bus Arrival Timings 
