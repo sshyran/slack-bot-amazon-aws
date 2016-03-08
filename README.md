@@ -3,6 +3,9 @@ A tutorial on creating a Node.js Slack bot using AWS Lambda with AWS API Gateway
 
 ![Slack Bot](https://c2.staticflickr.com/2/1562/25554826086_0e79e3b88d_o.png)
 
+## Build Status
+[![Build Status](https://travis-ci.org/lesterchan/slack-bot.svg?branch=master)](https://travis-ci.org/lesterchan/slack-bot)
+
 ## Setup
 I am choosing Asia Pacific (Tokyo) region for AWS Lambda and Asia Pacific (Singapore) region for AWS API Gateway. AWS Lambda is not yet available in Singapore.
 

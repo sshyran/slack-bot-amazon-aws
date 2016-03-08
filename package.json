@@ -17,6 +17,7 @@
     "request-promise": "*"
   },
   "devDependencies": {
+    "bluebird": "*",
     "eslint": "*",
     "eslint-config-google": "*",
     "expect.js": "*",
