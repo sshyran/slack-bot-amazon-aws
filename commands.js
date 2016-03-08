@@ -1,6 +1,7 @@
 /**
  * Requires
  */
+var Bluebird = require('bluebird');
 var rp = require('request-promise');
 var moment = require('moment');
 var ip = require('ip');
@@ -13,11 +14,28 @@ var helper = require('./helper');
  */
 module.exports = {
   /**
+   * Fake a error promise
+   *
+   * @param {string} error Error Message
+   *
+   * @return {object} Rejected Request Promise
+   */
+  error: function(error) {
+    return rp({
+      transform: function() {
+        return new Bluebird(function(resolve, reject) {
+          reject(new Error(error));
+        });
+      }
+    });
+  },
+
+  /**
    * Get Bus Arrival Timing
    *
    * @param {object} commandArguments Command Arguments
    *
-   * @return {object} Slack Attachment Format
+   * @return {object} Request promise
    */
   bus: function(commandArguments) {
     var busStopNo = commandArguments[0];
@@ -133,7 +151,7 @@ module.exports = {
   /**
    * Haze
    *
-   * @return {object} Slack Attachment Format
+   * @return {object} Request promise
    */
   haze: function() {
     return rp({
@@ -231,7 +249,7 @@ module.exports = {
    *
    * @param {object} commandArguments Command Arguments
    *
-   * @return {object} Slack Attachment Format
+   * @return {object} Request promise
    */
   ipinfo: function(commandArguments) {
     // Variables
@@ -290,7 +308,7 @@ module.exports = {
    *
    * @param {object} commandArguments Command Arguments
    *
-   * @return {object} Slack Attachment Format
+   * @return {object} Request promise
    */
   socialstats: function(commandArguments) {
     var link = commandArguments[0] || 'https://lesterchan.net';

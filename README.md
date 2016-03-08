@@ -9,7 +9,7 @@ I am choosing Asia Pacific (Tokyo) region for AWS Lambda and Asia Pacific (Singa
 ### Checkout Code
 ```
 $ git clone https://github.com/lesterchan/slack-bot.git  
-$ npm install  
+$ npm install --production  
 $ cd slack-bot  
 $ zip -r slack-bot.zip *.js node_modules/*
 ```
