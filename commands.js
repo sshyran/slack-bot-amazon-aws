@@ -1,7 +1,7 @@
 /**
  * Requires
  */
-var Bluebird = require('bluebird');
+var Promise = require('bluebird');
 var rp = require('request-promise');
 var moment = require('moment');
 var ip = require('ip');
@@ -21,13 +21,7 @@ module.exports = {
    * @return {object} Rejected Request Promise
    */
   error: function(error) {
-    return rp({
-      transform: function() {
-        return new Bluebird(function(resolve, reject) {
-          reject(new Error(error));
-        });
-      }
-    });
+    return Promise.reject(new Error(error.message));
   },
 
   /**
@@ -245,6 +239,47 @@ module.exports = {
   },
 
   /**
+   * Weather (3 hour Forecast)
+   *
+   * @return {object} Request promise
+   */
+  weather: function() {
+    return rp({
+      uri: config.lesterchanApiUrl + '/nea/nowcast',
+      json: true
+    }).then(function(body) {
+      var fields = [];
+      if (body.item.weatherForecast.area &&
+          body.item.weatherForecast.area.length > 0) {
+        body.item.weatherForecast.area.forEach(function(nowcast) {
+          fields.push(
+            {
+              title: helper.ucWords(nowcast['@attributes'].name),
+              value: helper.getMessage(nowcast['@attributes'].forecast),
+              short: true
+            }
+          );
+        });
+      }
+
+      // Attachments
+      var attachments = [{
+        pretext: ':sunny: :cloud: :rain_cloud: *Singapore Weather Conditions*',
+        title: '3 hour Forecast',
+        text: body.item.issue_datentime.replace('<br><font size=1>', '. '),
+        fallback: helper.getFallbackMessage(fields),
+        mrkdwn_in: ['pretext', 'text'], // eslint-disable-line camelcase
+        color: config.defaultColor,
+        fields: fields
+      }];
+
+      return {
+        attachments: attachments
+      };
+    });
+  },
+
+  /**
    * IP Info
    *
    * @param {object} commandArguments Command Arguments
@@ -256,7 +291,11 @@ module.exports = {
     var ipRequest = commandArguments[0] || ip.address();
 
     // Validate IP Address
-    ip.toBuffer(ipRequest);
+    try {
+      ip.toBuffer(ipRequest);
+    } catch (error) {
+      return this.error(error);
+    }
 
     return rp({
       uri: 'http://ipinfo.io/' + ipRequest + '/json',

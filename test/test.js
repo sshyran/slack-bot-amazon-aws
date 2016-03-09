@@ -58,6 +58,34 @@ describe('slack-bot', function() {
     }).catch(done);
   });
 
+  it('Should validate against invalid bus stop number', function(done) {
+    var output = lambda.handler({
+      trigger_word: 'bus',
+      text: 'bus invalidbustopno'
+    }, context);
+
+    output.then(function(response) {
+      expect(response).to.have.property('text');
+      expect(response.text).to.eql('Bus stop or number is invalid');
+
+      done();
+    }).catch(done);
+  });
+
+  it('Should validate against invalid bus number', function(done) {
+    var output = lambda.handler({
+      trigger_word: 'bus',
+      text: 'bus 14229 invalidbusno'
+    }, context);
+
+    output.then(function(response) {
+      expect(response).to.have.property('text');
+      expect(response.text).to.eql('Bus stop or number is invalid');
+
+      done();
+    }).catch(done);
+  });
+
   it('Should list down Singapore haze conditions', function(done) {
     var output = lambda.handler({
       trigger_word: 'haze',
@@ -78,6 +106,26 @@ describe('slack-bot', function() {
     }).catch(done);
   });
 
+  it('Should list down Singapore 3 hour forecast weather conditions', function(done) {
+    var output = lambda.handler({
+      trigger_word: 'weather',
+      text: 'weather'
+    }, context);
+
+    output.then(function(response) {
+      expect(response).to.have.property('attachments');
+      expect(response.attachments).to.have.length(1);
+
+      expect(response.attachments[0]).to.have.property('title');
+      expect(response.attachments[0].title).to.eql('3 hour Forecast');
+
+      expect(response.attachments[0]).to.have.property('fields');
+      expect(response.attachments[0].fields).to.have.length(45);
+
+      done();
+    }).catch(done);
+  });
+
   it('Should list down Google DNS information', function(done) {
     var output = lambda.handler({
       trigger_word: 'ipinfo',
@@ -93,6 +141,20 @@ describe('slack-bot', function() {
 
       expect(response.attachments[0]).to.have.property('fields');
       expect(response.attachments[0].fields).to.have.length(4);
+
+      done();
+    }).catch(done);
+  });
+
+  it('Should validate against invalid IP', function(done) {
+    var output = lambda.handler({
+      trigger_word: 'ipinfo',
+      text: 'ipinfo invalidip'
+    }, context);
+
+    output.catch(function(error) {
+      expect(error).to.have.property('message');
+      expect(error.message).to.eql('Invalid ip address: invalidip');
 
       done();
     }).catch(done);
