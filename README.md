@@ -73,7 +73,7 @@ $ zip -r slack-bot.zip *.js node_modules/*
 4. Click "Add Outgoing WebHook Integration".
 5. Scroll down to "Integration Settings" section.
 6. Under "Channel", choose "Any".
-7. Under "Trigger Word(s)", type in "bus,haze,ipinfo,socialstats" (without the quotes).
+7. Under "Trigger Word(s)", type in "bus,haze,weather,ipinfo,socialstats" (without the quotes).
 8. Under "URL(s)", type in your "Invoke URL" as noted above.
 9. Customize "Descriptive Label", "Name" and "Icon" to your liking and click "Save Settings".
 10. You are all set.
