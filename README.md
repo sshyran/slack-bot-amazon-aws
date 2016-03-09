@@ -148,6 +148,10 @@ Example: ```bus 1039 61```
 Usage: ```haze```  
 Example: ```haze```
 
+### Singapore Weather 3 Hour Forecast
+Usage: ```weather```  
+Example: ```weather```
+
 ### IP Information
 Usage: ```ipinfo <ip>```  
 Example: ```ipinfo 8.8.8.8```
