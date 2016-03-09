@@ -266,7 +266,13 @@ module.exports = {
       var attachments = [{
         pretext: ':sunny: :cloud: :rain_cloud: *Singapore Weather Conditions*',
         title: '3 hour Forecast',
-        text: body.item.issue_datentime.replace('<br><font size=1>', '. '),
+        text: helper.ucWords(
+          body.item.issue_datentime
+            .replace('<br><font size=1>', '. ')
+            .toLowerCase()
+        ).replace(/am|pm|at|to|on/gi, function lower(str) {
+          return str.toLowerCase();
+        }) + '.',
         fallback: helper.getFallbackMessage(fields),
         mrkdwn_in: ['pretext', 'text'], // eslint-disable-line camelcase
         color: config.defaultColor,

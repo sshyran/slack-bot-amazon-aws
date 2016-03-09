@@ -3,3 +3,7 @@
 
 # Build
 node_modules
+
+# Zip
+Archive.zip
+slack-bot.zip

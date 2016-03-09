@@ -16,6 +16,7 @@ exports.handler = function(event, context) {
   var processCommand = processCommands(event);
 
   processCommand.then(function(response) {
+    console.log(response);
     context.succeed(response);
   }).catch(function(error) {
     context.fail({text: error.message});
