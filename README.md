@@ -162,3 +162,6 @@ Example: ```socialstats https://lesterchan.net```
 
 ## Credits
 * Ryan Ray: [Serverless Slack Integrations with node.js, AWS Lambda, and AWS API Gateway](http://www.ryanray.me/serverless-slack-integrations).
+
+## See Also
+[Telegram Bot using AWS API Gateway and AWS Lamda](https://github.com/lesterchan/telegram-bot)
