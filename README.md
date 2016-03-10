@@ -60,7 +60,7 @@ $ zip -r slack-bot.zip *.js node_modules/*
 17. Copy and paste [this GitHub Gist](https://gist.githubusercontent.com/ryanray/668022ad2432e38493df/raw/a3b8c765791ac6cfc15811a5dcb2d97056adc107/aws-api-gateway-form-to-json.ftl) to the template box.
 18. Click on the "tick" icon beside the dropdown once you are done.
 19. This GitHub Gist will covert the your API Gateway data from application/x-www-form-urlencoded to application/json.
-20. Click on "Deploy API" button on the left.
+20. Click on "Deploy API" button on the top left.
 21. Under "Deployment Stage", click "New Stage".
 22. Under "Stage Name", I will type in "production".
 23. Click "Deploy".
