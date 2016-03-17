@@ -106,7 +106,7 @@ describe('slack-bot', function() {
     }).catch(done);
   });
 
-  it('Should list down Singapore 3 hour forecast weather conditions', function(done) {
+  it('Should list down Singapore 2 hour forecast weather conditions', function(done) {
     var output = lambda.handler({
       trigger_word: 'weather',
       text: 'weather'
@@ -117,10 +117,10 @@ describe('slack-bot', function() {
       expect(response.attachments).to.have.length(1);
 
       expect(response.attachments[0]).to.have.property('title');
-      expect(response.attachments[0].title).to.eql('3 hour Forecast');
+      expect(response.attachments[0].title).to.eql('2 hour Forecast');
 
       expect(response.attachments[0]).to.have.property('fields');
-      expect(response.attachments[0].fields).to.have.length(45);
+      expect(response.attachments[0].fields).to.have.length(47);
 
       done();
     }).catch(done);
