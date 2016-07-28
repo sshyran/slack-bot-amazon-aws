@@ -7,7 +7,7 @@ A tutorial on creating a Node.js Slack bot using AWS Lambda with AWS API Gateway
 [![Build Status](https://travis-ci.org/lesterchan/slack-bot.svg?branch=master)](https://travis-ci.org/lesterchan/slack-bot)
 
 ## Setup
-I am choosing Asia Pacific (Tokyo) region for AWS Lambda and Asia Pacific (Singapore) region for AWS API Gateway. AWS Lambda is not yet available in Singapore.
+I am choosing Asia Pacific (Singapore) region for AWS Lambda and Asia Pacific (Singapore) region for AWS API Gateway.
 
 ### Checkout Code
 ```
@@ -18,7 +18,7 @@ $ zip -r slack-bot.zip *.js node_modules/*
 ```
 
 ### AWS Lambda
-1. Go to [AWS Lambda](https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1).
+1. Go to [AWS Lambda](https://ap-southeast-1.console.aws.amazon.com/lambda/home?region=ap-southeast-1).
 2. Click "Get Started Now".
 3. Under the "Select blueprint" screen, search for "hello-word"and you will see the hello-word blueprint which says "A starter AWS Lambda function.".
 4. Click on "hello-world" (NOT "hello-world-python").
@@ -48,7 +48,7 @@ $ zip -r slack-bot.zip *.js node_modules/*
 6. Click "Create Method" and on the dropdown menu on the left, choose "POST" and click on the "tick" icon.
 7. Now, you will see the "/ - POST - Setup" page on the right.
 8. Under "Integration Type", choose "Lambda Function".
-9. Under "Lambda Region", choose "ap-northeast-1".
+9. Under "Lambda Region", choose "ap-southeast-1".
 10. Under "Lambda Function", type "slack" and it should auto-complete it to "slack-bot".
 11. Click "Save" and "Ok" when the popup appears.
 12. You will be brought to the "/ - POST - Method Execution" Page.
